@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    background-color: #202020;
+    background: url('../imgs/fundo-header.jpg');
     padding: 10px 0;
     width: 100%;
     height: 100px;
@@ -31,10 +31,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
-    color: white;
 }
 
-header ul {
+.menu-navegacao ul {
     display: flex;
     list-style: none;
     padding: 0;
@@ -43,17 +42,23 @@ header ul {
     align-items: center;
 }
 
-header li {
+.menu-navegacao li {
     margin: 0 15px;
 }
 
-header a {
-    color: white;
+.menu-navegacao a {
+    color: yellow;
     text-decoration: none;
+    text-shadow: 2px 2px 4px #000000;
     font-weight: bold;
 }
 
-
+.menu-navegacao a:hover {
+    text-decoration: underline;
+    color: rgb(21, 255, 0);
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
 
 
 
@@ -65,4 +70,39 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+footer nav {
+    margin-bottom: 20px;
+}
+
+.menu-navegacao-footer ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-navegacao-footer li {
+    margin: 0 15px;
+}
+
+.menu-navegacao-footer a {
+    color: #dbc7149d;
+    text-decoration: none;
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+.menu-navegacao-footer a:hover {
+    text-decoration: underline;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 0.7em;
 }
