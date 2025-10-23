@@ -25,14 +25,12 @@
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   transition: all 0.7s ease;
-  opacity: 0.8;
   transform-origin: center center;
 }
 
 /* imagem central */
 .carousel-track img.active {
   transform: translateX(0) translateZ(200px) rotateY(0deg);
-  opacity: 1;
   z-index: 5;
 }
 
@@ -44,12 +42,10 @@
 .carousel-track img.left2 {
   transform: translateX(-400px) rotateY(35deg) translateZ(-100px);
   z-index: 3;
-  opacity: 0.6;
 }
 .carousel-track img.left3 {
   transform: translateX(-600px) rotateY(45deg) translateZ(-200px);
   z-index: 2;
-  opacity: 0.4;
 }
 
 /* imagens à direita */
@@ -60,10 +56,8 @@
 .carousel-track img.right2 {
   transform: translateX(400px) rotateY(-35deg) translateZ(-100px);
   z-index: 3;
-  opacity: 0.6;
 }
 .carousel-track img.right3 {
   transform: translateX(600px) rotateY(-45deg) translateZ(-200px);
   z-index: 2;
-  opacity: 0.4;
 }
