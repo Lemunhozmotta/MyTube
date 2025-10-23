@@ -1,39 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-    const nextBtn = document.querySelector('.next-btn');
-    const prevBtn = document.querySelector('.prev-btn');
+const images = document.querySelectorAll('.carousel-track img');
+let index = 3; // começa com a imagem do meio em foco
 
-    let currentSlideIndex = 0;
-    const slideWidth = slides[0].getBoundingClientRect().width;
+function updateCarousel() {
+  images.forEach((img, i) => {
+    img.className = ''; // limpa as classes antes de reposicionar
+    const diff = i - index;
 
-    // Função para mover o carrossel e atualizar o slide ativo
-    const moveToSlide = (track, currentSlide, targetSlideIndex) => {
-        track.style.transform = 'translateX(-' + (slideWidth * targetSlideIndex) + 'px)';
-        slides[currentSlide].classList.remove('active');
-        slides[targetSlideIndex].classList.add('active');
-    };
+    if (diff === 0) img.classList.add('active');
+    else if (diff === -1 || diff === images.length - 1) img.classList.add('left1');
+    else if (diff === -2 || diff === images.length - 2) img.classList.add('left2');
+    else if (diff === -3 || diff === images.length - 3) img.classList.add('left3');
+    else if (diff === 1 || diff === -(images.length - 1)) img.classList.add('right1');
+    else if (diff === 2 || diff === -(images.length - 2)) img.classList.add('right2');
+    else if (diff === 3 || diff === -(images.length - 3)) img.classList.add('right3');
+  });
+}
 
-    // Inicializa o primeiro slide como ativo
-    slides[currentSlideIndex].classList.add('active');
+function next() {
+  index = (index + 1) % images.length;
+  updateCarousel();
+}
 
-    // Botão de avanço
-    nextBtn.addEventListener('click', () => {
-        if (currentSlideIndex < slides.length - 1) {
-            currentSlideIndex++;
-        } else {
-            currentSlideIndex = 0; // Volta para o início
-        }
-        moveToSlide(track, currentSlideIndex - 1, currentSlideIndex);
-    });
+function prev() {
+  index = (index - 1 + images.length) % images.length;
+  updateCarousel();
+}
 
-    // Botão de retrocesso
-    prevBtn.addEventListener('click', () => {
-        if (currentSlideIndex > 0) {
-            currentSlideIndex--;
-        } else {
-            currentSlideIndex = slides.length - 1; // Volta para o final
-        }
-        moveToSlide(track, currentSlideIndex + 1, currentSlideIndex);
-    });
-});
+// inicializa
+updateCarousel();
+
+// controles
+document.getElementById('next').addEventListener('click', next);
+document.getElementById('prev').addEventListener('click', prev);
+
+// gira automaticamente a cada 3.5s
+setInterval(next, 3500);
